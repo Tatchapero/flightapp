@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -58,5 +59,15 @@ public class FlightService {
         flightInfoList.stream()
                 .filter(x -> x.getDeparture().isBefore(dateTime))
                 .forEach(System.out::println);
+    }
+
+    public void averageFlightTimePerAirline() {
+        flightInfoList.stream()
+                .filter(x -> x.getAirline() != null)
+                .collect(Collectors.groupingBy(
+                        FlightInfoDTO::getAirline,
+                        Collectors.averagingLong(x -> x.getDuration().toMinutes())
+                ))
+                .forEach((x,y) -> System.out.println(x + ": " + Duration.ofMinutes(y.longValue())));
     }
 }

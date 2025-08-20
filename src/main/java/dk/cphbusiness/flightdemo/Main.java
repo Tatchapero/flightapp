@@ -11,6 +11,7 @@ public class Main {
 //        flightService.totalFlightTimeByAirline("Lufthansa");
 //        flightService.averageFlightTimeByAirline("Lufthansa");
 //        flightService.listFlightsByDepartureAndArrival("Fukuoka", "Haneda");
-        flightService.listFlightsBeforeTime(LocalDateTime.parse("2024-08-15T01:00"));
+//        flightService.listFlightsBeforeTime(LocalDateTime.parse("2024-08-15T01:00"));
+//        flightService.averageFlightTimePerAirline();
     }
 }
