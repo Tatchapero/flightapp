@@ -1,7 +1,6 @@
 package dk.cphbusiness.flightdemo.service;
 
 import dk.cphbusiness.flightdemo.FlightReader;
-import dk.cphbusiness.flightdemo.FlightWriter;
 import dk.cphbusiness.flightdemo.dtos.FlightDTO;
 import dk.cphbusiness.flightdemo.dtos.FlightInfoDTO;
 
@@ -10,7 +9,6 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -18,9 +16,9 @@ public class FlightService {
     List<FlightDTO> flights;
     List<FlightInfoDTO> flightInfoList;
 
-    public FlightService() {
+    public FlightService(String source) {
         try {
-            this.flights = FlightReader.getFlightsFromFile("flights.json");
+            this.flights = FlightReader.getFlightsFromFile(source);
             this.flightInfoList = FlightReader.getFlightInfoDetails(flights);
         }
         catch (IOException e) {
