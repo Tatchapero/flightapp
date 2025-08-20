@@ -7,6 +7,7 @@ import dk.cphbusiness.flightdemo.dtos.FlightInfoDTO;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -50,6 +51,12 @@ public class FlightService {
                 .filter(x -> x.getDestination() != null)
                 .filter(x -> x.getOrigin().contains(departureAirport))
                 .filter(x -> x.getDestination().contains(arrivalAirport))
+                .forEach(System.out::println);
+    }
+
+    public void listFlightsBeforeTime(LocalDateTime dateTime) {
+        flightInfoList.stream()
+                .filter(x -> x.getDeparture().isBefore(dateTime))
                 .forEach(System.out::println);
     }
 }
