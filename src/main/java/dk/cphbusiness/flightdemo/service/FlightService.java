@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class FlightService {
     List<FlightDTO> flights;
@@ -32,5 +33,14 @@ public class FlightService {
                 .filter(Objects::nonNull)
                 .reduce(Duration.ZERO, Duration::plus);
         System.out.println(airline + ": " + totalFlightTime);
+    }
+
+    public void averageFlightTimeByAirline(String airline) {
+        Double averageFlightTime = flightInfoList.stream()
+                .filter(x -> x.getAirline() != null)
+                .filter(x -> x.getAirline().equals(airline))
+                .map(x -> x.getDuration().toMinutes())
+                .collect(Collectors.averagingLong(x -> x));
+        System.out.println(airline + ": " + Duration.ofMinutes(averageFlightTime.longValue()));
     }
 }

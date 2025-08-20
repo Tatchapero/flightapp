@@ -7,5 +7,6 @@ public class Main {
         FlightService flightService = new FlightService();
 
         flightService.totalFlightTimeByAirline("Lufthansa");
+        flightService.averageFlightTimeByAirline("Lufthansa");
     }
 }
