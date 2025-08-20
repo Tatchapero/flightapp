@@ -77,4 +77,15 @@ public class FlightService {
                 .sorted(Comparator.comparing(FlightInfoDTO::getArrival))
                 .forEach(System.out::println);
     }
+
+    public void totalFlightTimePerAirline() {
+        flightInfoList.stream()
+                .filter(x -> x.getAirline() != null)
+                .filter(x -> x.getDuration() != null)
+                .collect(Collectors.groupingBy(
+                        FlightInfoDTO::getAirline,
+                        Collectors.summingLong(x -> x.getDuration().toMinutes())
+                ))
+                .forEach((x,y) -> System.out.println(x + ": " + Duration.ofMinutes(y)));
+    }
 }

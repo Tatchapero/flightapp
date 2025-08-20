@@ -14,5 +14,6 @@ public class Main {
 //        flightService.listFlightsBeforeTime(LocalDateTime.parse("2024-08-15T01:00"));
 //        flightService.averageFlightTimePerAirline();
 //        flightService.allFlightsSortedByArrivalTime();
+//        flightService.totalFlightTimePerAirline();
     }
 }
