@@ -8,6 +8,7 @@ import dk.cphbusiness.flightdemo.dtos.FlightInfoDTO;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -69,5 +70,11 @@ public class FlightService {
                         Collectors.averagingLong(x -> x.getDuration().toMinutes())
                 ))
                 .forEach((x,y) -> System.out.println(x + ": " + Duration.ofMinutes(y.longValue())));
+    }
+
+    public void allFlightsSortedByArrivalTime() {
+        flightInfoList.stream()
+                .sorted(Comparator.comparing(FlightInfoDTO::getArrival))
+                .forEach(System.out::println);
     }
 }
