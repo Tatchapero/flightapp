@@ -15,5 +15,6 @@ public class Main {
 //        flightService.averageFlightTimePerAirline();
 //        flightService.allFlightsSortedByArrivalTime();
 //        flightService.totalFlightTimePerAirline();
+//        flightService.allFlightsSortedByDuration();
     }
 }

@@ -88,4 +88,10 @@ public class FlightService {
                 ))
                 .forEach((x,y) -> System.out.println(x + ": " + Duration.ofMinutes(y)));
     }
+
+    public void allFlightsSortedByDuration() {
+        flightInfoList.stream()
+                .sorted(Comparator.comparing(FlightInfoDTO::getDuration))
+                .forEach(System.out::println);
+    }
 }
