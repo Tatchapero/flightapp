@@ -3,8 +3,11 @@ package dk.cphbusiness.flightdemo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dk.cphbusiness.flightdemo.dtos.FlightDTO;
 import dk.cphbusiness.flightdemo.dtos.FlightInfoDTO;
+import dk.cphbusiness.flightdemo.service.FlightService;
 import dk.cphbusiness.utils.Utils;
 
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.Duration;
@@ -23,6 +26,7 @@ public class FlightReader {
             List<FlightDTO> flightList = getFlightsFromFile("flights.json");
             List<FlightInfoDTO> flightInfoDTOList = getFlightInfoDetails(flightList);
             flightInfoDTOList.forEach(System.out::println);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
