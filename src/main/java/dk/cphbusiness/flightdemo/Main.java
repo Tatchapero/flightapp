@@ -8,5 +8,6 @@ public class Main {
 
         flightService.totalFlightTimeByAirline("Lufthansa");
         flightService.averageFlightTimeByAirline("Lufthansa");
+        flightService.listFlightsByDepartureAndArrival("Fukuoka", "Haneda");
     }
 }

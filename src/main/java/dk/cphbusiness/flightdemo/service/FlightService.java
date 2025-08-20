@@ -43,4 +43,13 @@ public class FlightService {
                 .collect(Collectors.averagingLong(x -> x));
         System.out.println(airline + ": " + Duration.ofMinutes(averageFlightTime.longValue()));
     }
+
+    public void listFlightsByDepartureAndArrival(String departureAirport, String arrivalAirport) {
+        flightInfoList.stream()
+                .filter(x -> x.getOrigin() != null)
+                .filter(x -> x.getDestination() != null)
+                .filter(x -> x.getOrigin().contains(departureAirport))
+                .filter(x -> x.getDestination().contains(arrivalAirport))
+                .forEach(System.out::println);
+    }
 }
